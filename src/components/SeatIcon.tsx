@@ -72,9 +72,20 @@ export const SeatIcon: React.FC<SeatIconProps> = ({
           {showSeatNumber && displayLabel ? displayLabel : isSelected ? seat.row : ''}
         </div>
 
-        {/* Seat Bottom Cushion Bar */}
+        {/* Seat Bottom Cushion Bar (mobile) */}
         <div
-          className={`w-full h-1.5 sm:h-2 rounded-full mt-0.5 transition-colors ${
+          className={`md:hidden w-full h-1.5 sm:h-2 rounded-full mt-0.5 transition-colors ${
+            isSelected
+              ? 'bg-[#8274FF]/80'
+              : isOccupied
+              ? 'bg-[#5F6777]'
+              : 'bg-[#BAC1CD]'
+          }`}
+        />
+
+        {/* Desktop right-side accent bar */}
+        <div
+          className={`hidden md:block absolute right-1 top-1.5 bottom-1.5 w-[5px] rounded-full transition-colors ${
             isSelected
               ? 'bg-[#8274FF]/80'
               : isOccupied
