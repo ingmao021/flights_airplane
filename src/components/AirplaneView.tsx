@@ -36,9 +36,12 @@ export const AirplaneView: React.FC<AirplaneViewProps> = ({
 
   return (
     <div className="relative w-full px-3 md:px-8 py-2 md:py-4">
-      {/* Background card with subtle dot grid */}
-      <div className="relative w-full bg-[#F5F6F8]/70 md:bg-white rounded-3xl md:rounded-[28px] border border-gray-200/70 p-2 md:p-8 shadow-xs overflow-hidden md:bg-grid-dots">
+      {/* Background card */}
+      <div className="relative w-full bg-[#F5F6F8]/70 md:bg-white rounded-3xl md:rounded-[28px] border border-gray-200/70 p-2 md:p-8 shadow-xs overflow-hidden">
         
+        {/* Dotted Grid Background - ONLY for Desktop / Web Mode */}
+        <div className="hidden md:block absolute inset-0 bg-grid-dots-desktop pointer-events-none z-0" />
+
         {/* Floating control buttons (desktop left side) */}
         <div className="hidden lg:flex flex-col gap-2.5 absolute left-5 top-1/2 -translate-y-1/2 z-20">
           <button
@@ -68,7 +71,7 @@ export const AirplaneView: React.FC<AirplaneViewProps> = ({
         </div>
 
         {/* Airplane Container */}
-        <div className="relative max-w-4xl mx-auto py-5 md:py-9 flex items-center justify-center select-none">
+        <div className="relative max-w-4xl mx-auto py-5 md:py-9 flex items-center justify-center select-none z-10">
           
           {/* Main Airplane Canvas */}
           <div className="relative w-full max-w-[840px] h-16 md:h-28 flex items-center">
