@@ -31,8 +31,7 @@ export const SeatMapDesktop: React.FC<SeatMapDesktopProps> = ({
     <div className="w-full px-8 py-4 grid grid-cols-12 gap-6 items-stretch">
       {/* Left Column: 3D Rendering Card (Cols 4) */}
       <div
-        onClick={onOpen3DModal}
-        className="col-span-12 lg:col-span-4 bg-[#111215] text-white rounded-[28px] p-7 flex flex-col justify-between shadow-xl relative overflow-hidden group cursor-pointer border border-white/5 hover:border-white/15 transition-all duration-300 min-h-[320px]"
+        className="col-span-12 lg:col-span-4 bg-[#111215] text-white rounded-[28px] p-7 flex flex-col justify-between shadow-xl relative overflow-hidden group border border-white/5 transition-all duration-300 min-h-[320px]"
       >
         {/* Glow effect on hover */}
         <div className="absolute -top-20 -right-20 w-44 h-44 bg-[#D4FF3A]/15 rounded-full blur-2xl group-hover:bg-[#D4FF3A]/25 transition-all pointer-events-none" />
