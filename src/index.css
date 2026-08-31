@@ -8,19 +8,19 @@
 }
 
 /* Custom animations */
-@keyframes lightSweep {
+@keyframes verticalBeamSweep {
   0% {
-    transform: translateX(-150%) skewX(-25deg);
+    left: -8%;
     opacity: 0;
   }
-  20% {
-    opacity: 0.85;
+  10% {
+    opacity: 1;
   }
-  70% {
-    opacity: 0.85;
+  88% {
+    opacity: 1;
   }
   100% {
-    transform: translateX(350%) skewX(-25deg);
+    left: 108%;
     opacity: 0;
   }
 }
@@ -47,8 +47,8 @@
   }
 }
 
-.animate-light-sweep {
-  animation: lightSweep 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+.animate-vertical-beam {
+  animation: verticalBeamSweep 3.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .animate-shake {
@@ -65,6 +65,15 @@
 
 .selected-seat-glow {
   box-shadow: 0 4px 18px rgba(80, 70, 229, 0.45), 0 0 0 1px rgba(129, 140, 248, 0.3);
+}
+
+.bright-white-beam-glow {
+  box-shadow: 
+    0 0 6px #ffffff,
+    0 0 14px #ffffff,
+    0 0 28px rgba(255, 255, 255, 0.95),
+    0 0 45px rgba(255, 255, 255, 0.8),
+    0 0 70px rgba(255, 255, 255, 0.5);
 }
 
 /* Dotted grid pattern */

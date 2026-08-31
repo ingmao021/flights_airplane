@@ -41,7 +41,7 @@ export const AirplaneView: React.FC<AirplaneViewProps> = ({
       <div className="relative w-full bg-[#F5F6F8]/70 md:bg-white rounded-3xl md:rounded-[28px] border border-gray-200/70 p-2 md:p-8 shadow-xs overflow-hidden md:bg-grid-dots">
         
         {/* Floating control buttons (desktop left side) */}
-        <div className="hidden lg:flex flex-col gap-2.5 absolute left-5 top-1/2 -translate-y-1/2 z-20">
+        <div className="hidden lg:flex flex-col gap-2.5 absolute left-5 top-1/2 -translate-y-1/2 z-30">
           <button
             onClick={() => onSelectSection(activeSectionId === 3 ? 1 : activeSectionId + 1)}
             title="Cambiar sección"
@@ -59,10 +59,10 @@ export const AirplaneView: React.FC<AirplaneViewProps> = ({
         </div>
 
         {/* Airplane Container */}
-        <div className="relative max-w-4xl mx-auto py-5 md:py-9 flex items-center justify-center select-none">
+        <div className="relative max-w-4xl mx-auto py-5 md:py-9 flex items-center justify-center select-none overflow-hidden">
           
           {/* Main Airplane Canvas */}
-          <div className="relative w-full max-w-[840px] h-16 md:h-28 flex items-center">
+          <div className="relative w-full max-w-[840px] h-20 md:h-32 flex items-center overflow-hidden">
             
             {/* SVG Wings & Tail Background Layer */}
             <svg
@@ -112,13 +112,22 @@ export const AirplaneView: React.FC<AirplaneViewProps> = ({
             </svg>
 
             {/* Fuselage (Body) */}
-            <div className="relative w-full h-11 md:h-14 rounded-full bg-gradient-to-b from-white via-[#F8F9FA] to-[#E2E5EA] shadow-[0_8px_20px_rgba(0,0,0,0.08),inset_0_1px_1px_rgba(255,255,255,1)] border border-gray-200/90 flex items-center overflow-hidden">
+            <div className="relative w-full h-11 md:h-14 rounded-full bg-gradient-to-b from-white via-[#F8F9FA] to-[#E2E5EA] shadow-[0_8px_20px_rgba(0,0,0,0.08),inset_0_1px_1px_rgba(255,255,255,1)] border border-gray-200/90 flex items-center overflow-hidden z-10">
               
               {/* Cockpit Window (Left Nose) */}
               <div className="absolute left-2 md:left-3 w-5 md:w-6 h-2 md:h-2.5 rounded-full bg-slate-400/80 shadow-inner z-10" />
 
               {/* Passenger Window Dots */}
-              {!isMobile && (
+              {isMobile ? (
+                <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 flex items-center justify-between z-0 px-1">
+                  {Array.from({ length: 15 }).map((_, idx) => (
+                    <div
+                      key={idx}
+                      className="w-1.5 h-1.5 rounded-full bg-slate-300/90 shadow-2xs shrink-0"
+                    />
+                  ))}
+                </div>
+              ) : (
                 <div className="w-full flex items-center justify-evenly px-10 md:px-14 z-0">
                   {Array.from({ length: 26 }).map((_, idx) => (
                     <div
@@ -142,9 +151,14 @@ export const AirplaneView: React.FC<AirplaneViewProps> = ({
               </div>
             </div>
 
-            {/* Exterior bright sweep highlight */}
-            <div className="absolute inset-x-2 top-1/2 -translate-y-1/2 h-11 md:h-14 pointer-events-none z-10">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/95 to-transparent blur-[2px] opacity-100 animate-light-sweep" />
+            {/* EXTERIOR BRIGHT WHITE VERTICAL LINE LOOP (Crossing the whole airplane height from outside) */}
+            <div className="absolute inset-0 pointer-events-none z-20 overflow-hidden">
+              <div className="absolute top-0 bottom-0 flex items-center justify-center -skew-x-12 animate-vertical-beam">
+                {/* Outer luminous glow aura */}
+                <div className="w-12 md:w-16 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent blur-[6px] shrink-0" />
+                {/* Core bright white glowing vertical line */}
+                <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[3px] md:w-[4px] bg-white rounded-full bright-white-beam-glow shrink-0" />
+              </div>
             </div>
 
             {/* Dynamic Highlight Box with Smooth Position Transition */}
