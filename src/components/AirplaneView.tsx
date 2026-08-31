@@ -1,5 +1,4 @@
 ﻿import React, { useEffect, useState } from 'react';
-import { Box, Layers } from 'lucide-react';
 import { SectionInfo } from '../types/seat';
 
 interface AirplaneViewProps {
@@ -45,16 +44,26 @@ export const AirplaneView: React.FC<AirplaneViewProps> = ({
           <button
             onClick={() => onSelectSection(activeSectionId === 3 ? 1 : activeSectionId + 1)}
             title="Cambiar sección"
-            className="w-9 h-9 rounded-xl bg-white border border-gray-200 shadow-xs hover:shadow-md flex items-center justify-center text-gray-700 hover:text-black transition-all active:scale-95 cursor-pointer"
+            className="w-10 h-10 rounded-xl bg-white border border-gray-200 shadow-xs hover:shadow-md flex items-center justify-center text-gray-700 hover:text-black transition-all active:scale-95 cursor-pointer"
           >
-            <Layers className="w-4 h-4" />
+            <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" aria-hidden="true">
+              <path
+                d="M12 3.3L18.7 12L12 20.7L5.3 12L12 3.3Z"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinejoin="round"
+              />
+            </svg>
           </button>
           <button
             onClick={onOpen3DModal}
             title="Ver cabina 3D"
-            className="w-9 h-9 rounded-xl bg-white border border-gray-200 shadow-xs hover:shadow-md flex items-center justify-center text-gray-700 hover:text-black transition-all active:scale-95 cursor-pointer"
+            className="w-10 h-10 rounded-xl bg-white border border-gray-200 shadow-xs hover:shadow-md flex items-center justify-center text-gray-700 hover:text-black transition-all active:scale-95 cursor-pointer"
           >
-            <Box className="w-4 h-4" />
+            <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
+              <path d="M12 2.5A9.5 9.5 0 0 1 21.5 12H2.5A9.5 9.5 0 0 1 12 2.5Z" fill="black" />
+              <path d="M12 21.5A9.5 9.5 0 0 1 2.5 12H21.5A9.5 9.5 0 0 1 12 21.5Z" fill="white" />
+            </svg>
           </button>
         </div>
 
