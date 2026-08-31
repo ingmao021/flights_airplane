@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { Box, Layers } from 'lucide-react';
 import { SectionInfo } from '../types/seat';
 
@@ -16,11 +16,29 @@ export const AirplaneView: React.FC<AirplaneViewProps> = ({
   onOpen3DModal,
 }) => {
   const activeSection = sections.find((s) => s.id === activeSectionId) || sections[0];
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 768);
+    onResize();
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  const highlightStyle = isMobile
+    ? {
+        left: `${activeSection.airplanePosition.mobileLeftPercent}%`,
+        width: `${activeSection.airplanePosition.mobileWidthPercent}%`,
+      }
+    : {
+        left: `${activeSection.airplanePosition.desktopLeftPercent}%`,
+        width: `${activeSection.airplanePosition.desktopWidthPercent}%`,
+      };
 
   return (
     <div className="relative w-full px-3 md:px-8 py-2 md:py-4">
       {/* Background card with subtle dot grid */}
-      <div className="relative w-full bg-[#F5F6F8]/70 md:bg-white rounded-3xl md:rounded-[28px] border border-gray-200/70 p-4 md:p-8 shadow-xs overflow-hidden bg-grid-dots">
+      <div className="relative w-full bg-[#F5F6F8]/70 md:bg-white rounded-3xl md:rounded-[28px] border border-gray-200/70 p-2 md:p-8 shadow-xs overflow-hidden md:bg-grid-dots">
         
         {/* Floating control buttons (desktop left side) */}
         <div className="hidden lg:flex flex-col gap-2.5 absolute left-5 top-1/2 -translate-y-1/2 z-20">
@@ -44,7 +62,7 @@ export const AirplaneView: React.FC<AirplaneViewProps> = ({
         <div className="relative max-w-4xl mx-auto py-5 md:py-9 flex items-center justify-center select-none">
           
           {/* Main Airplane Canvas */}
-          <div className="relative w-full max-w-[840px] h-20 md:h-28 flex items-center">
+          <div className="relative w-full max-w-[840px] h-16 md:h-28 flex items-center">
             
             {/* SVG Wings & Tail Background Layer */}
             <svg
@@ -96,21 +114,20 @@ export const AirplaneView: React.FC<AirplaneViewProps> = ({
             {/* Fuselage (Body) */}
             <div className="relative w-full h-11 md:h-14 rounded-full bg-gradient-to-b from-white via-[#F8F9FA] to-[#E2E5EA] shadow-[0_8px_20px_rgba(0,0,0,0.08),inset_0_1px_1px_rgba(255,255,255,1)] border border-gray-200/90 flex items-center overflow-hidden">
               
-              {/* Animated Light Sweep Reflection */}
-              <div className="absolute inset-0 w-36 md:w-56 bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none animate-light-sweep z-10" />
-
               {/* Cockpit Window (Left Nose) */}
               <div className="absolute left-2 md:left-3 w-5 md:w-6 h-2 md:h-2.5 rounded-full bg-slate-400/80 shadow-inner z-10" />
 
               {/* Passenger Window Dots */}
-              <div className="w-full flex items-center justify-evenly px-10 md:px-14 z-0">
-                {Array.from({ length: 26 }).map((_, idx) => (
-                  <div
-                    key={idx}
-                    className="w-1.5 h-1.5 rounded-full bg-slate-300/90 shadow-2xs shrink-0"
-                  />
-                ))}
-              </div>
+              {!isMobile && (
+                <div className="w-full flex items-center justify-evenly px-10 md:px-14 z-0">
+                  {Array.from({ length: 26 }).map((_, idx) => (
+                    <div
+                      key={idx}
+                      className="w-1.5 h-1.5 rounded-full bg-slate-300/90 shadow-2xs shrink-0"
+                    />
+                  ))}
+                </div>
+              )}
 
               {/* Clickable Section Zones */}
               <div className="absolute inset-0 flex z-20">
@@ -125,13 +142,15 @@ export const AirplaneView: React.FC<AirplaneViewProps> = ({
               </div>
             </div>
 
+            {/* Exterior bright sweep highlight */}
+            <div className="absolute inset-x-2 top-1/2 -translate-y-1/2 h-11 md:h-14 pointer-events-none z-10">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/95 to-transparent blur-[2px] opacity-100 animate-light-sweep" />
+            </div>
+
             {/* Dynamic Highlight Box with Smooth Position Transition */}
             <div
-              className="absolute top-1/2 -translate-y-1/2 h-[calc(100%+4px)] border-[3px] border-gray-900 bg-transparent rounded-lg md:rounded-xl pointer-events-none transition-all duration-500 ease-out z-30 shadow-[0_0_0_1px_rgba(17,24,39,0.05)]"
-              style={{
-                left: `${activeSection.airplanePosition.desktopLeftPercent}%`,
-                width: `${activeSection.airplanePosition.desktopWidthPercent}%`,
-              }}
+              className="absolute top-1/2 -translate-y-1/2 h-[calc(100%+2px)] md:h-[calc(100%+24px)] border-[3px] border-gray-900 bg-transparent rounded-[6px] md:rounded-xl pointer-events-none transition-all duration-500 ease-out z-30 shadow-[0_0_0_1px_rgba(17,24,39,0.05)]"
+              style={highlightStyle}
             />
 
           </div>

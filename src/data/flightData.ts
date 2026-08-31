@@ -21,8 +21,8 @@ export const SECTIONS_DATA: SectionInfo[] = [
     rows: [1, 2, 3, 4, 5, 6, 7, 8],
     columns: ['A', 'B', 'C', 'D', 'E', 'F'],
     airplanePosition: {
-      mobileLeftPercent: 8,
-      mobileWidthPercent: 28,
+      mobileLeftPercent: 7,
+      mobileWidthPercent: 30,
       desktopLeftPercent: 8,
       desktopWidthPercent: 24,
     },
@@ -39,7 +39,7 @@ export const SECTIONS_DATA: SectionInfo[] = [
     columns: ['A', 'B', 'C', 'D', 'E', 'F'],
     airplanePosition: {
       mobileLeftPercent: 36,
-      mobileWidthPercent: 28,
+      mobileWidthPercent: 30,
       desktopLeftPercent: 34,
       desktopWidthPercent: 26,
     },
@@ -55,8 +55,8 @@ export const SECTIONS_DATA: SectionInfo[] = [
     rows: [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28],
     columns: ['A', 'B', 'C', 'D', 'E', 'F'],
     airplanePosition: {
-      mobileLeftPercent: 64,
-      mobileWidthPercent: 28,
+      mobileLeftPercent: 65,
+      mobileWidthPercent: 30,
       desktopLeftPercent: 62,
       desktopWidthPercent: 26,
     },
