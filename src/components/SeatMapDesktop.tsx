@@ -40,7 +40,10 @@ export const SeatMapDesktop: React.FC<SeatMapDesktopProps> = ({
         {/* Card Top Row */}
         <div className="flex items-center justify-between z-10">
           {/* Neon lime grid icon */}
-          <div className="w-12 h-12 rounded-2xl bg-[#D4FF3A] flex items-center justify-center text-gray-950 shadow-md group-hover:scale-105 transition-transform">
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-12 h-12 rounded-2xl bg-[#D4FF3A] flex items-center justify-center text-gray-950 shadow-md group-hover:scale-105 transition-transform cursor-default"
+          >
             <div className="grid grid-cols-3 gap-1 p-2">
               {Array.from({ length: 9 }).map((_, i) => (
                 <div key={i} className="w-1.5 h-1.5 rounded-full bg-gray-950" />
@@ -48,7 +51,10 @@ export const SeatMapDesktop: React.FC<SeatMapDesktopProps> = ({
             </div>
           </div>
 
-          <div className="w-9 h-9 rounded-full bg-white/5 group-hover:bg-white/15 flex items-center justify-center text-gray-400 group-hover:text-white transition-all">
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-9 h-9 rounded-full bg-white/5 group-hover:bg-white/15 flex items-center justify-center text-gray-400 group-hover:text-white transition-all cursor-default"
+          >
             <ArrowUpRight className="w-5 h-5" />
           </div>
         </div>
