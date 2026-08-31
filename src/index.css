@@ -7,20 +7,20 @@
   }
 }
 
-/* Custom animations */
+/* Looping vertical bright white beam animation */
 @keyframes verticalBeamSweep {
   0% {
-    left: -8%;
+    left: -5%;
     opacity: 0;
   }
-  10% {
+  8% {
     opacity: 1;
   }
-  88% {
+  92% {
     opacity: 1;
   }
   100% {
-    left: 108%;
+    left: 105%;
     opacity: 0;
   }
 }
@@ -48,7 +48,7 @@
 }
 
 .animate-vertical-beam {
-  animation: verticalBeamSweep 3.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: verticalBeamSweep 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 .animate-shake {
@@ -67,13 +67,21 @@
   box-shadow: 0 4px 18px rgba(80, 70, 229, 0.45), 0 0 0 1px rgba(129, 140, 248, 0.3);
 }
 
-.bright-white-beam-glow {
+/* Pure luminous intense white line with outer contrast shadow */
+.vertical-glowing-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3.5px;
+  background: #ffffff;
   box-shadow: 
     0 0 6px #ffffff,
-    0 0 14px #ffffff,
-    0 0 28px rgba(255, 255, 255, 0.95),
-    0 0 45px rgba(255, 255, 255, 0.8),
-    0 0 70px rgba(255, 255, 255, 0.5);
+    0 0 12px #ffffff,
+    0 0 24px rgba(255, 255, 255, 1),
+    0 0 45px rgba(255, 255, 255, 0.9),
+    3px 0 12px rgba(15, 23, 42, 0.18),
+    -3px 0 12px rgba(15, 23, 42, 0.18);
+  pointer-events: none;
 }
 
 /* Dotted grid pattern (Desktop airplane background) */

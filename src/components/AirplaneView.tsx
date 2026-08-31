@@ -42,6 +42,11 @@ export const AirplaneView: React.FC<AirplaneViewProps> = ({
         {/* Dotted Grid Background - ONLY for Desktop / Web Mode */}
         <div className="hidden md:block absolute inset-0 bg-grid-dots-desktop pointer-events-none z-0" />
 
+        {/* Looping Bright White Vertical Line with Glow & Shadow Effect */}
+        <div className="absolute top-0 bottom-0 animate-vertical-beam pointer-events-none z-10">
+          <div className="h-full vertical-glowing-line" />
+        </div>
+
         {/* Floating control buttons (desktop left side) */}
         <div className="hidden lg:flex flex-col gap-2.5 absolute left-5 top-1/2 -translate-y-1/2 z-20">
           <button
@@ -162,11 +167,6 @@ export const AirplaneView: React.FC<AirplaneViewProps> = ({
                   />
                 ))}
               </div>
-            </div>
-
-            {/* Exterior bright sweep highlight */}
-            <div className="absolute inset-x-2 top-1/2 -translate-y-1/2 h-11 md:h-14 pointer-events-none z-10">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/95 to-transparent blur-[2px] opacity-100 animate-light-sweep" />
             </div>
 
             {/* Dynamic Highlight Box with Smooth Position Transition */}
