@@ -51,7 +51,7 @@ export const SECTIONS_DATA: SectionInfo[] = [
     price: 140,
     tag: 'ECONOMY',
     description: 'Excelente relación valor y comodidad en zona posterior',
-    freeSeatsCount: 78,
+    freeSeatsCount: 44,
     rows: [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28],
     columns: ['A', 'B', 'C', 'D', 'E', 'F'],
     airplanePosition: {

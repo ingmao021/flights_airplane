@@ -36,7 +36,6 @@ export const Header: React.FC<HeaderProps> = ({ flightInfo, onBack }) => {
           <div className="w-10 h-10 rounded-full bg-[#E3C29E] text-stone-800 font-semibold text-xs flex items-center justify-center shadow-sm">
             {flightInfo.passengerInitials}
           </div>
-          <span className="absolute bottom-0 right-0 w-3 h-3 bg-gray-900 border-2 border-white rounded-full" />
         </div>
       </div>
 

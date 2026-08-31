@@ -127,17 +127,12 @@ export const AirplaneView: React.FC<AirplaneViewProps> = ({
 
             {/* Dynamic Highlight Box with Smooth Position Transition */}
             <div
-              className="absolute -top-3 md:-top-4 h-[calc(100%+24px)] md:h-[calc(100%+32px)] border-2 border-gray-900 bg-black/[0.03] backdrop-blur-[0.5px] rounded-2xl md:rounded-3xl pointer-events-none transition-all duration-500 ease-out z-30 shadow-xs flex flex-col items-center justify-start"
+              className="absolute top-1/2 -translate-y-1/2 h-[calc(100%+4px)] border-[3px] border-gray-900 bg-transparent rounded-lg md:rounded-xl pointer-events-none transition-all duration-500 ease-out z-30 shadow-[0_0_0_1px_rgba(17,24,39,0.05)]"
               style={{
                 left: `${activeSection.airplanePosition.desktopLeftPercent}%`,
                 width: `${activeSection.airplanePosition.desktopWidthPercent}%`,
               }}
-            >
-              {/* Badge on Top of Highlight Box */}
-              <div className="-mt-3 px-3 py-0.5 bg-gray-950 text-white rounded-full text-[9px] md:text-[10px] font-bold tracking-widest uppercase shadow-md flex items-center gap-1">
-                <span>{activeSection.tag}</span>
-              </div>
-            </div>
+            />
 
           </div>
         </div>

@@ -47,7 +47,7 @@ export const BottomSummaryBar: React.FC<BottomSummaryBarProps> = ({
             )}
           </div>
 
-          <div className="text-[11px] font-semibold text-gray-400 shrink-0">
+          <div className="hidden sm:block text-[11px] font-semibold text-gray-400 shrink-0">
             {selectedSeats.length}/{maxSeats}
           </div>
         </div>

@@ -16,18 +16,18 @@ export const SectionTabs: React.FC<SectionTabsProps> = ({
     <div className="w-full px-4 md:px-8 py-2 flex flex-col md:flex-row items-center justify-between gap-3">
       {/* Left: SECTIONS label + Pill Tabs */}
       <div className="flex items-center gap-3 w-full md:w-auto justify-center md:justify-start">
-        <span className="text-[10px] md:text-xs font-bold tracking-widest text-gray-400 uppercase">
+        <span className="hidden md:inline text-[10px] md:text-xs font-bold tracking-widest text-gray-400 uppercase">
           SECTIONS
         </span>
 
-        <div className="flex items-center bg-[#ECEEF2] p-1 rounded-full border border-gray-200/60 shadow-2xs">
+        <div className="flex items-center w-full md:w-auto justify-center bg-[#ECEEF2] p-1 rounded-full border border-gray-200/60 shadow-2xs">
           {sections.map((sec) => {
             const isActive = sec.id === activeSectionId;
             return (
               <button
                 key={sec.id}
                 onClick={() => onSelectSection(sec.id)}
-                className={`min-w-14 md:min-w-16 py-1.5 px-4 rounded-full text-xs font-bold transition-all duration-300 cursor-pointer ${
+                className={`flex-1 md:flex-none min-w-14 md:min-w-16 py-1.5 px-4 rounded-full text-xs font-bold transition-all duration-300 cursor-pointer ${
                   isActive
                     ? 'bg-gray-950 text-white shadow-md scale-100'
                     : 'text-gray-500 hover:text-gray-900 hover:bg-white/50'

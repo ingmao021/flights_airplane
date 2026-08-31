@@ -19,6 +19,8 @@ export const SeatMapMobile: React.FC<SeatMapMobileProps> = ({
 }) => {
   const leftCols = ['A', 'B', 'C'];
   const rightCols = ['D', 'E', 'F'];
+  const mobileSectionLabel =
+    activeSection.id === 1 ? 'Premium' : activeSection.id === 2 ? 'Business' : 'Economy';
 
   return (
     <div className="w-full px-4 pt-2 pb-44 flex flex-col items-center">
@@ -28,8 +30,19 @@ export const SeatMapMobile: React.FC<SeatMapMobileProps> = ({
           isMaxWarningActive ? 'animate-shake ring-2 ring-red-400' : ''
         }`}
       >
-        {/* Section Title & Price Info */}
-        <div className="flex items-center justify-between pb-4 border-b border-gray-100 mb-4">
+        {/* Mobile Section Summary */}
+        <div className="flex md:hidden items-center justify-between gap-3 pb-3 border-b border-gray-100 mb-3">
+          <h2 className="text-sm font-extrabold text-gray-900 tracking-tight">
+            {mobileSectionLabel}
+            <span className="font-extrabold text-black"> · Sec {activeSection.id}</span>
+          </h2>
+          <span className="text-[11px] font-semibold text-gray-400 whitespace-nowrap">
+            {activeSection.freeSeatsCount} libres · ${activeSection.price} / asiento
+          </span>
+        </div>
+
+        {/* Desktop Section Title & Price Info */}
+        <div className="hidden md:flex items-center justify-between pb-4 border-b border-gray-100 mb-4">
           <h2 className="text-base font-extrabold text-gray-900 tracking-tight">
             {activeSection.name}
           </h2>
